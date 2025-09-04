@@ -91,8 +91,35 @@ class SSJ2State implements SaiyanState {
 /** === Prueba === */
 if (require.main === module) {
   const goku = new Goku();
-  goku.powerUp();
-  goku.fase();
-  goku.powerDown();
-  goku.fase();
+  const prompt = require("prompt-sync")();
+  let cond = true;
+  while (cond) {
+    console.log("=========================");
+    console.log("1. Subir de fase");
+    console.log("2. Bajar de fase");
+    console.log("3. Mostrar fase actual");
+    console.log("4. Salir");
+    console.log("=========================");
+    const opcion = prompt("Ingrese una opción: ");
+    switch (opcion) {
+      case "1":
+        console.clear();
+        goku.powerUp();
+        break;
+      case "2":
+        console.clear();
+        goku.powerDown();
+        break;
+      case "3":
+        console.clear();
+        goku.fase();
+        break;
+      case "4":
+        cond = false;
+        break;
+      default:
+        console.clear();
+        console.log("Opción inválida");
+    }
+  }
 }
